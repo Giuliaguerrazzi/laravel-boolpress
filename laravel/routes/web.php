@@ -21,4 +21,13 @@ Route::get('/', function () {
 //rotte per il login
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('admin')
+    ->namespace('Admin')//controller creato
+    ->name('admin.')
+    ->middleware('auth')//rotte protette da autenticazione
+    ->group(function() {
+            //definiamo le rotte
+            Route::get('/', 'HomeController@index')->name('home');
+    });
