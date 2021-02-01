@@ -24,7 +24,7 @@
     </div>
     <div class="form-group">
         <label for="body">Post Content</label>
-        <textare class='form-control' id="body" name="body" cols="30" rows="10">{{old('body')}}</textarea>
+        <textarea class="form-control" id="body" name="body">{{ old('body') }}</textarea>
     </div>
     
     <input class='btn btn-primary' type="submit" value="Create Post">

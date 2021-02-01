@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -42,7 +43,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        //serve l'id dell'utente che è loggato
+        $data['user_id'] = Auth::id();
+
+        $data['slug'] = Str::slug($data['title'], '-');
+
+        //creare l'istanza del modello
+        $newPost = new Post();
+        $newPost->fill($data); //da il fillable del modello
+
+        $saved = $newPost->save();
+
+        if($saved) {
+            return redirect()->route('admin.posts.index');
+        }
     }
 
     /**

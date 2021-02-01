@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 //home
 Route::get('/', 'Homecontroller@index')->name('home');
 
+//rotte pubbliche
+Route::get('posts', 'PostController@index')->name('posts.index');
+
 //rotte per il login
 Auth::routes();
 
