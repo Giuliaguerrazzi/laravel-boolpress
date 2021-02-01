@@ -28,4 +28,7 @@ Route::prefix('admin')
     ->group(function() {
             //definiamo le rotte
             Route::get('/', 'HomeController@index')->name('home');
+
+            //route post crud
+            Route::resource('posts', 'PostController');
     });

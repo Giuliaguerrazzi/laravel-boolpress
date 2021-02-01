@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    //
+    //relazione con db
+    //post-users
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
+
 }
