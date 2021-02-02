@@ -18,6 +18,7 @@ Route::get('/', 'Homecontroller@index')->name('home');
 
 //rotte pubbliche
 Route::get('posts', 'PostController@index')->name('posts.index');
+Route::get('posts/{slug}', 'PostController@show')->name('posts.show');
 
 //rotte per il login
 Auth::routes();
